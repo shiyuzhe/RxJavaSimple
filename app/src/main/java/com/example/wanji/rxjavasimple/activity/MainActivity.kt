@@ -1,17 +1,16 @@
-package com.example.wanji.rxjavasimple
+package com.example.wanji.rxjavasimple.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.wanji.rxjavasimple.creating.ActCreate
+import com.example.wanji.rxjavasimple.R
 import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.rxkotlin.zipWith
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * edit:EditView,在输入改变时触发一次请求
-     * debounce：限流，防抖，输入间隙大于400ms时触发一次请求
+     * debounce：限流，防抖，400ms无输入操作时触发一次请求
      * switchMap：Observable结果合并，当后一个Observable开始发射元素时，自动取消订阅的Observable，前一个Observable中尚未发送完的元素会被抛弃
      */
     @SuppressLint("SetTextI18n")

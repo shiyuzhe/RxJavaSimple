@@ -3,6 +3,7 @@ package com.example.wanji.rxjavasimple
 import io.reactivex.*
 import io.reactivex.rxkotlin.subscribeBy
 import org.junit.Test
+import java.util.concurrent.Callable
 import java.util.concurrent.TimeUnit
 
 /**
@@ -100,8 +101,12 @@ class CreatingObservablesTest {
     @Test
     fun testFrom() {
 
-        val fromCallable = Observable.fromCallable { "fromCallable" }
-        val fromPublisher = Observable.fromPublisher<String> {  }
+        Observable.fromCallable(object : Callable<String> {
+            override fun call(): String = "fromCallable"
+        })
+        Observable.fromCallable { "fromCallable" }
+
+        val fromPublisher = Observable.fromPublisher<String> { }
 
 
 // ?       Observable.fromFuture()
