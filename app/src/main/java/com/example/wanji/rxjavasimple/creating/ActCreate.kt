@@ -15,7 +15,8 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 /**
- * testDefer
+ * testSomeCreateOperators
+ * others see RxJavaSimple\app\src\test\java\com\example\wanji\rxjavasimple\CreatingObservablesTest.kt
  */
 class ActCreate : AppCompatActivity() {
     var answer = ""//log Info
