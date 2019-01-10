@@ -3,6 +3,7 @@ package com.example.wanji.rxjavasimple.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.wanji.rxjavasimple.R
+import com.example.wanji.rxjavasimple.subscribeByThreadRetry
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -18,7 +19,7 @@ class ActRetry : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_retry)
         retry.setOnClickListener {
-            retry()
+            ret()
         }
     }
 
@@ -50,6 +51,19 @@ class ActRetry : AppCompatActivity() {
                     System.out.println("subscribing")
                 }.subscribeBy {
                     System.out.println("subscribeBy$it")
+                }
+    }
+
+
+    fun ret() {
+        var num = 0//记录重连次数
+        disposable = Observable.timer(1, TimeUnit.SECONDS)
+                .map {
+                    if (++num > 2)
+                        return@map 1
+                    throw  RuntimeException()
+                }.subscribeByThreadRetry(disposable) {
+                    System.out.println("subscribeByThreadRetry:$it")
                 }
     }
 }
