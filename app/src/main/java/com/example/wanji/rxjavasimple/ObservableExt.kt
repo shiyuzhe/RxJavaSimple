@@ -18,4 +18,4 @@ import io.reactivex.schedulers.Schedulers
  */
 
 fun <T : Any> Observable<T>.subscribeByThread(onErr: (Throwable) -> Unit = {}, onNextStub: (T) -> Unit = {}
-): Disposable = subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribeBy(onErr, {}, onNextStub)
+): Disposable = this.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribeBy(onErr, {}, onNextStub)

@@ -51,6 +51,12 @@ class MainActivity : AppCompatActivity() {
         createOperators.setOnClickListener {
             startActivity(Intent(this, ActCreate::class.java))
         }
+        transOperators.setOnClickListener {
+            startActivity(Intent(this, ActTransforming::class.java))
+        }
+        retry.setOnClickListener {
+            startActivity(Intent(this, ActRetry::class.java))
+        }
     }
 
 

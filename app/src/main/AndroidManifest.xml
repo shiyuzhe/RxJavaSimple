@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ActCreate"></activity>
+        <activity android:name=".activity.ActCreate" />
+        <activity android:name=".activity.ActTransforming" />
+        <activity android:name=".activity.ActRetry"></activity>
     </application>
 
 </manifest>
